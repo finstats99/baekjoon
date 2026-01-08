@@ -3,13 +3,8 @@ def solution(n, m, section):
     sector = 0
     
     for i in section:
-        if m == 1:
-            if i > sector:
-                cnt += 1
-                sector = i
-        else:
-            if i > sector:
-                cnt += 1
-                sector = i + m -1  
+        if i > sector:
+            cnt += 1
+            sector = i + m -1  
         
     return cnt

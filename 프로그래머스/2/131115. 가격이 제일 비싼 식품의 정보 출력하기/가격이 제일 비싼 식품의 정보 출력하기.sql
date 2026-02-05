@@ -1,0 +1,3 @@
+SELECT  product_id, product_name, product_cd, category, price
+  FROM  food_product
+ WHERE  price = (select max(price) from food_product)

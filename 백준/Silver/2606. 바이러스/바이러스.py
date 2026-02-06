@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 input = sys.stdin.readline
 
 n = int(input())
@@ -15,6 +16,27 @@ for i in range(m):
 # 방문처리 리스트
 visited = [False] * (n+1)
 
+
+
+############## bfs
+def bfs(v):
+    queue = deque([v])
+    visited[v] = True
+    cnt = 0
+
+    while queue:
+        curr = queue.popleft()
+
+        for nxt in graph[curr]:
+            if visited[nxt] == False:
+                visited[nxt] = True
+                queue.append(nxt)
+                cnt += 1
+
+    return cnt
+
+
+############## dfs
 cnt = 0
 def dfs(v):
     global cnt
@@ -25,5 +47,7 @@ def dfs(v):
             cnt += 1
             dfs(nxt)
         
-dfs(1)
-print(cnt)
+# dfs(1)
+# print(cnt)
+
+print(bfs(1))

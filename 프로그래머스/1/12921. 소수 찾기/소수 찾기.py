@@ -7,7 +7,6 @@ def solution(n):
                 return False
         return True
     
-    
     for i in range(2,n+1):
         if is_prime(i):
             cnt += 1

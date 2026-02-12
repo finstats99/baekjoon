@@ -24,4 +24,3 @@ def solution(n, computers):
             ans += 1
     
     return ans
-        

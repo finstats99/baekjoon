@@ -1,6 +1,33 @@
 from collections import deque
 
 def solution(priorities, location):
+    
+    queue = deque()
+    for i, j in enumerate(priorities):
+        queue.append((i, j))
+    
+    cnt = 0
+    while True:
+        max_val = max(item[1] for item in queue)
+        curr = queue.popleft()
+        
+        if curr[1] == max_val:
+            cnt += 1
+            if curr[0] == location:
+                return cnt
+            
+        else:
+            queue.append(curr)
+
+
+
+
+
+
+
+
+
+def answer(priorities, location):
     queue = deque(priorities) 
     num_que = deque(range(len(priorities)))
     

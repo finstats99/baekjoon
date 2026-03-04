@@ -10,11 +10,9 @@ def solution(routes):
         if before[0] <= now[0] <= before[1]: 
             if now[1] <= before[1]:
                 before[1] = now[1]
-            else:
-                pass
             
         else :
             cnt += 1
-            before = sorted_routes[i]
+            before = now
             
     return cnt

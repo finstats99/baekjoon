@@ -1,35 +1,37 @@
 from collections import deque
 
+
 def solution(n, vertex):
+    
+    sort_vertex = sorted(vertex, key = lambda x:x[0])
     graph = [[] for _ in range(n+1)]
+    visited = [False] * len(range(n+1))
     
     for a, b in vertex:
         graph[a].append(b)
         graph[b].append(a)
-        
-    dist = [-1] * (n+ + 1)  
-    dist[1] = 0
-    
+                
     queue = deque([1])
+    visited[1] = True
+    ans = [0] * len(range(n+1))
     
     while queue:
         curr = queue.popleft()
-        
-        for nxt in graph[curr]:
-            if dist[nxt] == -1: # 아직 방문되지 않은 노드
-                dist[nxt] = dist[curr] + 1 
-                # dist[curr] : 현 시점 노드가 1번 노드에서 멀어진 거리
-                # dist[nxt] : dist[curr]에서 거리 1 추가
-                
-                queue.append(nxt)
-        
-    ans = max(dist) 
-    return dist.count(ans)
+        for i in graph[curr]:
             
-
-
-
-
+            if not visited[i]:
+                visited[i] = True
+                queue.append(i)
+                ans[i] = ans[curr] + 1
+    
+    max_val = max(ans)
+    answer = 0
+    for num in ans:
+        if num == max_val:
+            answer += 1
+    return answer
+    
+    
 
 
 
